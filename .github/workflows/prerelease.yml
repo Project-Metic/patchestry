@@ -143,7 +143,7 @@ jobs:
 
   deploy_doc:
     needs: build_prerelease
-    runs-on: ubuntu-latest
+    runs-on: magnon-enterprise-runners
     permissions:
       contents: write
 
