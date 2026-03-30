@@ -16,6 +16,9 @@ on:
     branches:
       - '*'
 
+env:
+  IMAGE_NAME: trailofbits/decompile-test:latest
+
 jobs:
   ghidra-script-tests:
     strategy:
@@ -47,6 +50,15 @@ jobs:
         run: |
           DOCKER_BUILDKIT=1 docker build -t trailofbits/decompile-test:latest -f test/decompile-test.dockerfile . && \
           docker run trailofbits/decompile-test
+
+
+      - name: Scan image with Trivy
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ${{ env.IMAGE_NAME }}
+          format: table
+          exit-code: 0
+          severity: CRITICAL,HIGH
 
       - name: Clean up Docker artifacts
         if: always()
