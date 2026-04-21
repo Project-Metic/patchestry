@@ -7,15 +7,20 @@
 
 name: Build Dev Container
 
+permissions:
+  contents: read
+
 on: workflow_dispatch
 
 jobs:
   build:
     strategy:
+      fail-fast: false
       matrix:
         llvm-version: [20]
         image-version: [22.04]
-    runs-on: ubuntu-22.04
+    runs-on: magnon-enterprise-runners
+    timeout-minutes: 60
 
     permissions:
         packages: write

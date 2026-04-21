@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 
 # Check if the current directory is a Git repository
 if !( [ -d .git ] || git rev-parse --git-dir > /dev/null 2>&1 ); then

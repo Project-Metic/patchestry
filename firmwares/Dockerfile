@@ -44,6 +44,10 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 
+RUN addgroup --system --gid 65532 nonroot && \
+    adduser --system --uid 65532 --gid 65532 --no-create-home nonroot
+USER nonroot
+
 # --- Disable FORTIFY_SOURCE globally -----------------------------------------
 ENV CFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0"
 ENV CXXFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0"

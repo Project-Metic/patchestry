@@ -48,3 +48,7 @@ RUN apt-get -y purge llvm-14 clang-14
 # Add docker group and add root to it
 RUN groupadd docker || true && \
     usermod -aG docker root
+
+RUN addgroup --system --gid 65532 nonroot && \
+    adduser --system --uid 65532 --gid 65532 --no-create-home nonroot
+USER nonroot

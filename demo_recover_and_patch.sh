@@ -1,4 +1,5 @@
 #!/bin/bash
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 #
 # Demo script: Recovering bl_device__process_entry function from bloodview
 # and lifting it to Clang IR

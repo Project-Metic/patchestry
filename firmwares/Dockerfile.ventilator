@@ -28,5 +28,9 @@ RUN pip3 install --no-cache-dir \
     nanopb==0.4.7 \
     grpcio-tools==1.54.2
 
+RUN addgroup --system --gid 65532 nonroot && \
+    adduser --system --uid 65532 --gid 65532 --no-create-home nonroot
+USER nonroot
+
 WORKDIR /work
 ENTRYPOINT ["/bin/bash"]

@@ -115,5 +115,9 @@ COPY --chown=user:user test/scripts/ghidra/util/ test/util/
 COPY --chown=user:user test/scripts/ghidra/ test/
 RUN mv test/build.gradle .
 
+RUN addgroup --system --gid 65532 nonroot && \
+    adduser --system --uid 65532 --gid 65532 --no-create-home nonroot
+USER nonroot
+
 # should run everything including the test task
 ENTRYPOINT ["gradle", "build"]

@@ -1,4 +1,5 @@
 #!/bin/bash
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 
 # Test script for building patchestry intrinsics library
 # This script demonstrates different build configurations

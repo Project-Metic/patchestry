@@ -21,4 +21,8 @@ ENV LLVM_EXTERNAL_LIT="/usr/local/bin/lit"
 WORKDIR /workspace/patchestry
 
 # Set the default command to bash
+
+RUN addgroup --system --gid 65532 nonroot && \
+    adduser --system --uid 65532 --gid 65532 --no-create-home nonroot
+USER nonroot
 CMD ["/bin/bash"]
